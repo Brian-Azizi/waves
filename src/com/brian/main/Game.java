@@ -1,6 +1,9 @@
 package com.brian.main;
 
 import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.image.BufferStrategy;
 
 public class Game extends Canvas implements Runnable {
     private static final long serialVersionUID = -8993431008488886099L;
@@ -56,6 +59,26 @@ public class Game extends Canvas implements Runnable {
             }
         }
         stop();
+    }
+
+    private void tick() {
+
+    }
+
+    private void render() {
+        BufferStrategy bs = this.getBufferStrategy();
+        if (bs == null) {
+            this.createBufferStrategy(3);
+            return;
+        }
+        Graphics g = bs.getDrawGraphics();
+
+        g.setColor(Color.black);
+        g.fillRect(0, 0, WIDTH, HEIGHT);
+
+        g.dispose();
+        bs.show();
+
     }
 
     public static void main(String[] args) {
