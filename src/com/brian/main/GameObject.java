@@ -8,7 +8,7 @@ import java.awt.Graphics;
 public abstract class GameObject {
     protected int x, y;
     protected ID id;
-    protected int volX, volY;
+    protected int velX, velY;
 
     public GameObject(int x, int y, ID id) {
         this.x = x;
@@ -44,19 +44,19 @@ public abstract class GameObject {
         return id;
     }
 
-    public void setVolX(int volX) {
-        this.volX = volX;
+    public void setVelX(int velX) {
+        this.velX = velX;
     }
 
-    public void setVolY(int volY) {
-        this.volY = volY;
+    public void setVelY(int velY) {
+        this.velY = velY;
     }
 
-    public int getVolX() {
-        return volX;
+    public int getVelX() {
+        return velX;
     }
 
-    public int getVolY() {
-        return volY;
+    public int getVelY() {
+        return velY;
     }
 }

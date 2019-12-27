@@ -6,13 +6,11 @@ import java.awt.Graphics;
 public class Player extends GameObject {
     public Player(int x, int y, ID id) {
         super(x, y, id);
-        setVolX(1);
-        setVolY(1);
     }
 
     public void tick() {
-        x += volX;
-        y += volY;
+        x += velX;
+        y += velY;
     }
 
     public void render(Graphics g) {
