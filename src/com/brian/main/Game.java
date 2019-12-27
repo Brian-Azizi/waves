@@ -13,6 +13,7 @@ public class Game extends Canvas implements Runnable {
     private Thread thread;
     private boolean running = false;
     private Handler handler;
+    private HUD hud;
 
     public Game() {
         handler = new Handler();
@@ -21,6 +22,7 @@ public class Game extends Canvas implements Runnable {
 
         handler.addObject(new Player(WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.Player));
         handler.addObject(new BasicEnemy(WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.BasicEnemy));
+        hud = new HUD();
     }
 
     public synchronized void start() {
@@ -70,6 +72,7 @@ public class Game extends Canvas implements Runnable {
 
     private void tick() {
         handler.tick();
+        hud.tick();
     }
 
     private void render() {
@@ -84,10 +87,10 @@ public class Game extends Canvas implements Runnable {
         g.fillRect(0, 0, WIDTH, HEIGHT);
 
         handler.render(g);
+        hud.render(g);
 
         g.dispose();
         bs.show();
-
     }
 
     public static int clamp(int var, int min, int max) {
