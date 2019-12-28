@@ -38,11 +38,11 @@ public class Player extends GameObject {
 
     public void render(Graphics g) {
         g.setColor(Color.white);
-        g.fillRect(x, y, 32, 32);
+        g.fillRect((int) x, (int) y, 32, 32);
     }
 
     @Override
     public Rectangle getBounds() {
-        return new Rectangle(x, y, 32, 32);
+        return new Rectangle((int) x, (int) y, 32, 32);
     }
 }

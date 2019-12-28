@@ -23,13 +23,13 @@ public class SmartEnemy extends GameObject {
         x += velX;
         y += velY;
 
-        int diffX = player.getX() - x + 8;
-        int diffY = player.getY() - y + 8;
+        float diffX = player.getX() - x + 8;
+        float diffY = player.getY() - y + 8;
         float distance = (float) Math
                 .sqrt((x - player.getX()) * (x - player.getX()) + (y - player.getY()) * (y - player.getY()));
 
-        velX = Math.round(diffX / distance);
-        velY = Math.round(diffY / distance);
+        velX = diffX / distance;
+        velY = diffY / distance;
 
         if (y <= 0 || y >= Game.HEIGHT - 32)
             velY *= -1;
@@ -42,12 +42,12 @@ public class SmartEnemy extends GameObject {
     @Override
     public void render(Graphics g) {
         g.setColor(Color.green);
-        g.fillRect(x, y, 16, 16);
+        g.fillRect((int) x, (int) y, 16, 16);
     }
 
     @Override
     public Rectangle getBounds() {
-        return new Rectangle(x, y, 16, 16);
+        return new Rectangle((int) x, (int) y, 16, 16);
     }
 
 }
