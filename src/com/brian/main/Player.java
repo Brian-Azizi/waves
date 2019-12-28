@@ -27,7 +27,8 @@ public class Player extends GameObject {
     private void collision() {
         for (int i = 0; i < handler.object.size(); i++) {
             GameObject tempObject = handler.object.get(i);
-            if (tempObject.getId() == ID.BasicEnemy || tempObject.getId() == ID.FastEnemy) {
+            if (tempObject.getId() == ID.BasicEnemy || tempObject.getId() == ID.FastEnemy
+                    || tempObject.getId() == ID.SmartEnemy) {
                 if (getBounds().intersects(tempObject.getBounds())) {
                     HUD.HEALTH -= 2;
                 }
