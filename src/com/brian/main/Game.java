@@ -4,6 +4,7 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import java.util.Random;
 
 public class Game extends Canvas implements Runnable {
     private static final long serialVersionUID = -8993431008488886099L;
@@ -12,17 +13,24 @@ public class Game extends Canvas implements Runnable {
 
     private Thread thread;
     private boolean running = false;
+
+    private Random r;
     private Handler handler;
     private HUD hud;
 
     public Game() {
         handler = new Handler();
+        r = new Random();
         this.addKeyListener(new KeyInput(handler));
+        hud = new HUD();
+
         new Window(WIDTH, HEIGHT, "Waves", this);
 
         handler.addObject(new Player(WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.Player, handler));
-        handler.addObject(new BasicEnemy(WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.BasicEnemy));
-        hud = new HUD();
+        handler.addObject(new BasicEnemy(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.BasicEnemy, handler));
+        handler.addObject(new BasicEnemy(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.BasicEnemy, handler));
+        handler.addObject(new BasicEnemy(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.BasicEnemy, handler));
+        handler.addObject(new BasicEnemy(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.BasicEnemy, handler));
     }
 
     public synchronized void start() {
